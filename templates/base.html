@@ -9,6 +9,7 @@
 </head>
 <body>
 	<nav class="nav">
+		{% block nav %}
 		<div class="container">
 			<div class="nav-row">
 				<ul class="nav-list1">
@@ -17,24 +18,43 @@
 				</ul>
 
 				<div class="nav-row__logo">
-					<a href="/base.html" class="logo__text"><strong>Kissing</strong> Both</a>
+					<a href="/first" class="logo__text"><strong>Kissing</strong> Both</a>
 				</div>
 
 				<ul class="nav-list">
-					<li class="nav-list__item"><a href="#" class="nav-list__link nav-list__link--active">Войти</a></li>
-					<li class="nav-list__item"><a href="#" class="nav-list__link">Регистрация</a></li>
+					<li class="nav-list__item"><a href="#" class="nav-list__link">Войти</a></li>
+					<li class="nav-list__item"><a href="/first/regist" class="nav-list__link">Регистрация</a></li>
+					<li class="nav-list__item nav-list__item--active">{{username}}</li>
 				</ul>
 			</div>
 		</div>
+		{% endblock %}
 	</nav>
 	<header>
 
 	</header>
-	<main>
-
+	<main class="main">
+		{% block main %}
+		<div class="main__window">
+			<h1 class="main__window-title">Kissing Both</h1>
+			<p>Если тебе скучно и одиноко, жми кнопку:</p>
+			<a href="/first/regist"><button class="main__window-button">Регистрация</button></a>
+		</div>
+		{% endblock %}
 	</main>
-	<footer>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer__wrapper">
+				<div class="copyright">
+					<p><a href="/first" style="color: #fff;">&copy; Kissing Both.com</a></p>
+				</div>
 
+				<div class="contacts">
+					<p>+7-996-380-44-57</p>
+					<p>kkapinoss@mail.ru</p>
+				</div>
+			</div>
+		</div>
 	</footer>
 </body>
 </html>

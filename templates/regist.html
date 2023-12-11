@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block nav %}
+<div class="nav-row__logo">
+	<a href="/first" class="logo__text"><strong>Kissing</strong> Both</a>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="main__window">
+	<form class="form" method="POST">
+		<h1 class="main__window-title">Registration page</h1>
+		<div><label for="username"></label></div>
+		<input class="main__window-input" type="text" name="username" placeholder="Логин">
+		<div><label for="password"></label></div>
+		<input class="main__window-input" type="text" name="password" placeholder="Пароль">
+		<!-- <div class="error_2"><span>{{errors}}</span></div> -->
+	</form>
+	<a href="#"><button class="main__window-button">Зарегистрироваться</button></a>
+</div>
+{% endblock %}
