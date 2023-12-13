@@ -11,8 +11,8 @@ class users(db.Model, UserMixin):
 	username = db.Column(db.String(30), nullable=False, unique=True)
 	password = db.Column(db.String(102), nullable=False)
 
-	# def __repr__(self):
-	# 	return f'id:{self.id}, username:{self.username}'
+	def __repr__(self):
+		return f'id:{self.id}, username:{self.username}'
 
 class anceta(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -23,5 +23,5 @@ class anceta(db.Model):
 	about_me = db.Column(db.Text, nullable=False)
 	likes = db.Column(db.Integer)
 
-	# def __repr__(self):
-	# 	return f'title:{self.title}, article_text:{self.article_text}'
+	def __repr__(self):
+		return f'name:{self.name}, age:{self.age}, about_me:{self.about_me}'

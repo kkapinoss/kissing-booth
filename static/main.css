@@ -21,6 +21,11 @@ html, body {
 	background-size: 100%; */
 }
 
+.error {
+	color: #DC143C;
+	font-family: 'Passion One', sans-serif;
+}
+
 .container {
 	margin: 0 auto;
 	padding: 0 15px;
