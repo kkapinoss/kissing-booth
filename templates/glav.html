@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+<nav class="nav">
+	{% block nav %}
+	<div class="container">
+		<div class="nav-row">
+			<ul class="nav-list1">
+				<li class="nav-list__item"><a href="/stran" class="nav-list__link">Моя анкета</a></li>
+				<li class="nav-list__item"><a href="#" class="nav-list__link">Смотреть анкеты</a></li>
+			</ul>
+
+			<div class="nav-row__logo">
+				<a href="/first" class="logo__text"><strong>Kissing</strong> Both</a>
+			</div>
+
+			<ul class="nav-list">
+				<li class="nav-list__item"><a href="/first/logout" class="nav-list__link">Выйти</a></li>
+				<li class="nav-list__item nav-list__item--active">{{username}}</li>
+			</ul>
+		</div>
+	</div>
+	{% endblock %}
+</nav>
+
+{% block main %}
+<form class="margin_2" id="searchForm" action="/search" method="POST">
+	<div class="findblock">
+			<input class="input_2" type="text" name="findname" placeholder="Имя" value="{{ findname }}">
+			<input class="input_2" type="number" name="findage" placeholder="Возраст" value="{{ findage }}">
+			<button class="button_2" type="submit">Поиск</button>
+	</div>
+</form>
+
+<div class="row">
+	{% if profiles %}
+			{% for profile in profiles %}
+					<div class="col">
+							<div class="profile">
+									<div><img class="photo_2" src="{{ profile.photo }}" alt="{{ profile.name }}'s photo"></div>
+									<h3>{{ profile.name }}</h3>
+									<p>Возраст: {{ profile.age }}</p>
+									<p>О себе: {{ profile.about }}</p>
+							</div>
+					</div>
+			{% endfor %}
+	{% else %}
+			<p>No profiles found. Please try a different search.</p>
+	{% endif %}
+</div>
+
+<form id="loadMoreForm" class="margin_2" action="/loadmore" method="POST">
+	<input type="hidden" name="last_displayed_profile_id" value="{{ profiles[0].id if profiles else 0 }}">
+	<input type="hidden" name="findname" value="{{ findname }}">
+	<input type="hidden" name="findage" value="{{ findage }}">
+	<button class="input_1 button_1" type="submit">Показать еще</button>
+</form>
+{% endblock %}
