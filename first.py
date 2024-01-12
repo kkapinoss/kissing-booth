@@ -26,12 +26,20 @@ def start():
 
 @first.route('/first')
 def main():
+	# if current_user.is_authenticated:
+	# 	username = current_user.username
+	# else:
+	# 	username = "Аноним"
+	return render_template('base.html')
+
+
+@first.route('/glav')
+def mains():
 	if current_user.is_authenticated:
 		username = current_user.username
 	else:
 		username = "Аноним"
-	return render_template('base.html', username=username)
-
+	return render_template('glav.html', username=username)
 
 
 
@@ -63,7 +71,7 @@ def login():
 	if my_user is not None:
 		if check_password_hash(my_user.password, password_form):
 			login_user(my_user, remember=False)
-			return redirect('/first')
+			return redirect('/glav')
 		else:
 			error='Incorrect password'
 			return render_template('login.html', error=error) 
@@ -153,7 +161,7 @@ def page():
     new_form = anc(user_id=user_id, name=name, age=age, gender=gender, search_gender=search_gender, about=about, photo=photo)
     db.session.add(new_form)
     db.session.commit()
-    return redirect('/first')
+    return redirect('/glav')
 
 
 @first.route('/first/page_change', methods=['POST', 'GET'])
@@ -191,7 +199,7 @@ def page_change():
     existing_form.photo = photo
 
     db.session.commit()
-    return redirect('/first')
+    return redirect('/glav')
 
 #Поиск
 @first.route('/search', methods=['POST'])

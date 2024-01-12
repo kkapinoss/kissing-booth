@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block nav %}
+<div class="nav-row__logo">
+	<a href="/first" class="logo__text"><strong>Kissing</strong> Both</a>
+</div>
+{% endblock %}
+
+{% block main %}
+    <form class="margin_2" method="POST">
+        <div class="label_input_3">Анкета</div>
+        <input class="main__window-input" type="text" name="urname" placeholder="Имя" value="{{ form.name }}">
+        <input class="main__window-input" type="number" name="urage" placeholder="Возраст" value="{{ form.age }}">
+        <div class="label_input_2">Укажите ваш пол</div>
+        <select class="input_1" name="urmale">
+            <option value="female" {% if form.gender == 'female' %} selected {% endif %}>Женский</option>
+            <option value="male" {% if form.gender == 'male' %} selected {% endif %}>Мужской</option>
+        </select> 
+        <div class="label_input_2">Укажите пол человека, которого ищете</div>
+        <select class="input_1" name="urfindmale">
+            <option value="female" {% if form.search_gender == 'female' %} selected {% endif %}>Женский</option>
+            <option value="male" {% if form.search_gender == 'male' %} selected {% endif %}>Мужской</option>
+        </select>
+        <input class="main__window-input" type="text" name="urinfo" placeholder="О себе" value="{{ form.about}}">
+        <div class="label_input_2">Вставьте ссылку на вашу фотографию</div>
+        <input class="main__window-input" type="text" name="urphoto" placeholder="Фотография" value="{{ form.photo}}">
+        <div><button class="input_1 button_1" type="submit">Сохранить анкету</button></div>
+        <div class="label_input_1 error"><span>{{errors}}</span></div>
+    </form>
+{% endblock %}
